@@ -25,12 +25,24 @@ app.use(function (req, res, next) {
 });
 
 // Database Connection Configuration 
-mongoose.connect('mongodb://localhost/invoices');
-mongoose.connection.once('open',function(){
-    console.log('Database connected Successfully');
-}).on('error',function(err){
-    console.log('Error', err);
-})
+// mongoose.connect('mongodb://localhost/invoices');
+// mongoose.connection.once('open',function(){
+//     console.log('Database connected Successfully');
+// }).on('error',function(err){
+//     console.log('Error', err);
+// })
+
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://111:3211234567@cluster0.avh4quv.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("invoices").collection("invoice");
+  console.log('Database connected Successfully', collection);
+  // perform actions on the collection object
+  // client.close();
+});
+
 
 async function getUUIDs() {
   let UUIDLists = [];
