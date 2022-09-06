@@ -40,7 +40,7 @@ client.connect(err => {
   const collection = client.db("invoices").collection("invoice");
   console.log('Database connected Successfully', collection);
   // perform actions on the collection object
-  client.db.invoice.save({
+  client.db.collection("invoice").save({
     "applicationId" : "a1f47fd467c5-bab5-98fe-47f7-8eaaf929",
     "PAN": "8888446754770887",
     "UUID": "rrEff929-97fe-41f7-bab4-a1f77fd473c5",
