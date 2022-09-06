@@ -37,20 +37,17 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://111:3211234567@cluster0.avh4quv.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 client.connect(err => {
-  const collection = client.db("invoices").collection("invoice");
-  console.log('Database connected Successfully', db.invoice);
-  // perform actions on the collection object
-  // db.invoice.insert({
-  //   "applicationId" : "a1f47fd467c5-bab5-98fe-47f7-8eaaf929",
-  //   "PAN": "8888446754770887",
-  //   "UUID": "rrEff929-97fe-41f7-bab4-a1f77fd473c5",
-  //   "authenticationType": "00",
-  //   "tranDateTime": "040318135553",
-  //   "payer_name": "Hisham",
-  //   "payeeId": "0010010003",
-  //   "billInfo": "{\"totalAmount\": \"200.33311\",\"billedAmount\": 50.111,\"lastInvoiceDate\":\"12-12-2014\",\"contractNumber\": \"1000090096\",\"last4Digits\": \"1234\",\"unbilledAmount\": 150.22222}"
-  // })
-  // client.close();
+  const collection = client.db("invoices").collection('bills').insertOne({
+    "applicationId" : "a1f47fd467c5-bab5-98fe-47f7-8eaaf929",
+    "PAN": "8888446754770887",
+    "UUID": "rrEff929-97fe-41f7-bab4-a1f77fd473c5",
+    "authenticationType": "00",
+    "tranDateTime": "040318135553",
+    "payer_name": "Hisham",
+    "payeeId": "0010010003",
+    "billInfo": "{\"totalAmount\": \"200.33311\",\"billedAmount\": 50.111,\"lastInvoiceDate\":\"12-12-2014\",\"contractNumber\": \"1000090096\",\"last4Digits\": \"1234\",\"unbilledAmount\": 150.22222}"
+  });
+  console.log('Database connected Successfully', collection);
 });
 
 
