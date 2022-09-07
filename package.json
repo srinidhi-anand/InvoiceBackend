@@ -8,12 +8,14 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "heroku-postbuild": "cd client && npm i && npm run build",
+    "heroku-postbuild": "npm i && npm run build",
     "server": "nodemon app.js"
   },
   "dependencies": {
     "mongodb": "^3.5.9",
     "mongoose": "^6.5.0",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.0",
     "del": "2.2.0",
