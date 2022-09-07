@@ -1,4 +1,5 @@
 // Set up
+require ('dotenv').config();
 var express = require('express');
 var app = express(); // create our app w/ express
 var morgan = require('morgan'); // log requests to the console (express4)
