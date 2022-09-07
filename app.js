@@ -44,7 +44,7 @@ async function server(){
       "authenticationType": "00",
       "tranDateTime": "040318135553",
       "payer_name": "Hisham",
-      "invoice_provider_name":"Gloria Jeans",
+      "service_provider_name":"Gloria Jeans",
       "unit_name": "Gloria Jeans Coffee House",
       "payeeId": "0010010003",
       "billInfo": "{\"totalAmount\": \"200.33311\",\"billedAmount\": 50.111,\"lastInvoiceDate\":\"12-12-2014\",\"contractNumber\": \"1000090096\",\"last4Digits\": \"1234\",\"unbilledAmount\": 150.22222}"
