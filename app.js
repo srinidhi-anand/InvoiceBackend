@@ -31,26 +31,31 @@ async function server(){
   const uri = "mongodb+srv://111:3211234567@cluster0.avh4quv.mongodb.net/?retryWrites=true&w=majority";
   const { MongoClient, ServerApiVersion } = require('mongodb');
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-  await client.connect(async err => {
-    const db = client.db("invoices").collection('invoiceBill');
-    count = await db.countDocuments();
-    console.log(' Database Connected Successfully ',count);
-    if ( count === 0) {
-      // Initial Sample Create if there is no data available
-      invoiceBill.insertOne({
-        "applicationId" : "a1f47fd467c5-bab5-98fe-47f7-8eaaf929",
-        "PAN": "8888446754770887",
-        "UUID": "rrEff929-97fe-41f7-bab4-a1f77fd473c5",
-        "authenticationType": "00",
-        "tranDateTime": "040318135553",
-        "payer_name": "Hisham",
-        "invoice_provider_name":"Gloria Jeans",
-        "unit_name": "Gloria Jeans Coffee House",
-        "payeeId": "0010010003",
-        "billInfo": "{\"totalAmount\": \"200.33311\",\"billedAmount\": 50.111,\"lastInvoiceDate\":\"12-12-2014\",\"contractNumber\": \"1000090096\",\"last4Digits\": \"1234\",\"unbilledAmount\": 150.22222}"
-      });
-    }
-  });
+  try{
+    await client.connect(async err => {
+      const db = client.db("invoices").collection('invoiceBill');
+      count = await db.countDocuments();
+      console.log(err, ' Database Connected Successfully ',count);
+      if ( count === 0) {
+        // Initial Sample Create if there is no data available
+        invoiceBill.insertOne({
+          "applicationId" : "a1f47fd467c5-bab5-98fe-47f7-8eaaf929",
+          "PAN": "8888446754770887",
+          "UUID": "rrEff929-97fe-41f7-bab4-a1f77fd473c5",
+          "authenticationType": "00",
+          "tranDateTime": "040318135553",
+          "payer_name": "Hisham",
+          "invoice_provider_name":"Gloria Jeans",
+          "unit_name": "Gloria Jeans Coffee House",
+          "payeeId": "0010010003",
+          "billInfo": "{\"totalAmount\": \"200.33311\",\"billedAmount\": 50.111,\"lastInvoiceDate\":\"12-12-2014\",\"contractNumber\": \"1000090096\",\"last4Digits\": \"1234\",\"unbilledAmount\": 150.22222}"
+        });
+      }
+    });
+  } catch (error) {
+    console.error('Failed to connect to MongoDB server');
+
+  }
   
   const database = client.db("invoices");
   const invoiceBill = database.collection("invoiceBill");
