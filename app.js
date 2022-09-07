@@ -74,6 +74,17 @@ async function server(){
     if (Invoice.length > 0)  res.json(Invoice);
   });
 
+  app.get('/', (req, res, next) => {
+    res.status(200).json({
+        status: 'success',
+        data: {
+            name: 'E-Invoice',
+            version: '0.1.0'
+        }
+    });
+
+});
+
   // To create invoices
   app.post('/api/new', async function(req,res) {
       let UUIDLists = await invoiceBill.find( { }, { _id: 0, UUID: 1 }).toArray();
