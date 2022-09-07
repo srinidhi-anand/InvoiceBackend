@@ -7,7 +7,7 @@ var bodyParser = require('body-parser'); // pull information from HTML POST (exp
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var cors = require('cors');
 var ObjectId = require('mongodb').ObjectID;
-
+app.use(express.static(__dirname + '/api'));
 
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.urlencoded({ extended: 'true' })); // parse application/x-www-form-urlencoded
