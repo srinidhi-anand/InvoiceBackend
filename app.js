@@ -31,7 +31,7 @@ async function server(){
   const uri = "mongodb+srv://111:3211234567@cluster0.avh4quv.mongodb.net/?retryWrites=true&w=majority";
   const { MongoClient, ServerApiVersion } = require('mongodb');
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-  client.connect(async err => {
+  await client.connect(async err => {
     const db = client.db("invoices").collection('invoiceBill');
     count = await db.countDocuments();
     console.log(' Database Connected Successfully ',count);
