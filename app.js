@@ -90,7 +90,7 @@ async function server(){
 
 if (require.main === module) {
   // listen (start app with node app.js) ============
-  var port = process.env.PORT || 8000
+  var port = process.env.PORT || 3000
   app.listen(port);
   console.log(`App listening on port ${port}`);
   server();
